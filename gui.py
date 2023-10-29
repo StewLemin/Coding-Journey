@@ -31,9 +31,12 @@ while True:
         case"Add":
             todos = functions.get_todos()
             new_todo = values["todo"] + '\n'
-            todos.append(new_todo)
-            functions.write_todos(todos)
-            window["todos"].update(values=todos)
+            if new_todo.isspace():
+                sg.Popup("Add a task")
+            else:
+                todos.append(new_todo)
+                functions.write_todos(todos)
+                window["todos"].update(values=todos)
         case "Edit":
             try:
                 todo_to_edit = values["todos"][0]
@@ -47,12 +50,15 @@ while True:
             except IndexError:
                sg.Popup("Please select an item first")
         case "Complete":
-            todo_to_complete = values["todos"][0]
-            todos = functions.get_todos()
-            todos.remove(todo_to_complete)
-            functions.write_todos(todos)
-            window["todos"].update(values=todos)
-            window["todo"].update(value="")
+            try:
+                todo_to_complete = values["todos"][0]
+                todos = functions.get_todos()
+                todos.remove(todo_to_complete)
+                functions.write_todos(todos)
+                window["todos"].update(values=todos)
+                window["todo"].update(value="")
+            except IndexError:
+                sg.Popup("Please select an item first")
         case "todos":
             window["todo"].update(value=values["todos"][0])
         case "Exit":
