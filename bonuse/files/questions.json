@@ -1,0 +1,6 @@
+ [{"question_text": "Which is the largest animal on earth?",
+ "alternatives": ["Hippo", "Whale", "Elephant", "Ostrich"],
+"correct_answer": 4},
+{"question_text": "Which is the fattest animal?",
+"alternatives": ["Sailfish", "Cheetah", "Falcon", "Panther"],
+ "correct_answer": 2}]
